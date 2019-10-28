@@ -1,4 +1,5 @@
 import random
+import json
 crosswordwords=open('crosswordwords.txt')
 words=crosswordwords.read().split()
 strwords=crosswordwords.read()
@@ -7,6 +8,7 @@ alphabets=[]
 ans7=[]
 lessans=[]
 moreans=[]
+SCORE_CHART = json.load(open("score.json"))
 
 for i in range (65,91):
     alphabets.append(chr(i))
@@ -94,6 +96,15 @@ def findotherwords():
                 lessans.append(words[i]) 
                 wordsstrsorted[i]=' '
 
+def scoring(word_list):
+    score_list = {}
+    for word in word_list:
+        score = 0
+        for char in word:
+            score += SCORE_CHART[char]
+        score_list[word] = score
+    return score_list
+
 findbingowords()
 findotherwords()
 
@@ -134,7 +145,7 @@ if len(finalmoreans)==0:
 else:
     print('May be bingo words ! : '+str(finalmoreans))
 
-print('Other words : '+str(finallessans))
+print('Other words : '+str(scoring(finallessans)))
 
 
 
