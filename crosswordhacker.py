@@ -1,4 +1,6 @@
 import random
+import string
+
 crosswordwords=open('crosswordwords.txt')
 words=crosswordwords.read().split()
 strwords=crosswordwords.read()
@@ -8,10 +10,8 @@ ans7=[]
 lessans=[]
 moreans=[]
 
-for i in range (65,91):
-    alphabets.append(chr(i))
-for i in range (97,123):
-    alphabets.append(chr(i))
+alphabets += list(string.ascii_uppercase)
+alphabets += list(string.ascii_lowercase)
 
 def printerror():
     print('Error input !')
