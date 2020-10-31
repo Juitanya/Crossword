@@ -1,4 +1,6 @@
 import random
+import string
+
 import json
 crosswordwords=open('crosswordwords.txt')
 words=crosswordwords.read().split()
@@ -10,10 +12,8 @@ lessans=[]
 moreans=[]
 SCORE_CHART = json.load(open("score.json"))
 
-for i in range (65,91):
-    alphabets.append(chr(i))
-for i in range (97,123):
-    alphabets.append(chr(i))
+alphabets += list(string.ascii_uppercase)
+alphabets += list(string.ascii_lowercase)
 
 def printerror():
     print('Error input !')
